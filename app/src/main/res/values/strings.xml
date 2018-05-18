@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PingPongGame</string>
+    <string name="transition">transitionsplash</string>
+</resources>
