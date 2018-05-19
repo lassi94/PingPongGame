@@ -8,7 +8,7 @@ public class Level {
     public Level(int speed){
 
         this.speed = speed;
-        ball = new Ball(ball.getDiameter(), ball.getxCord(), ball.getyCord(), speed);
+        //ball = new Ball(ball.getDiameter(), ball.getxCord(), ball.getyCord(), speed);
     }
 
 }

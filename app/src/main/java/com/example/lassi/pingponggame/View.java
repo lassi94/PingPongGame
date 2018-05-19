@@ -26,6 +26,8 @@ public class View extends SurfaceView implements Runnable{
         paddle = new Paddle(context, 500, 200);
         cpuPaddle = new Paddle(context, 500, 800);
         ball = new Ball(context, 500, 500,1);
+        sh = getHolder();
+        paint = new Paint();
     }
 
     @Override
