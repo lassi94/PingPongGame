@@ -1,18 +1,22 @@
 package com.example.lassi.pingponggame;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 public class Paddle {
 
-    final private int length;
-    final private int width;
+    private Bitmap paddlePic;
+
     private int xCord;
     private int yCord;
 
-    public Paddle(int length, int width, int xCord, int yCord){
+    public Paddle(int xCord, int yCord){
 
-        this.length = length;
-        this.width = width;
         this.xCord = xCord;
         this.yCord = yCord;
+
+        //paddlePic = BitmapFactory.decodeResource();
     }
 
     public void setxCord(int xCord){
@@ -25,16 +29,6 @@ public class Paddle {
         this.yCord = yCord;
     }
 
-    public int getLength(){
-
-        return this.length;
-    }
-
-    public int getWidth(){
-
-        return this.width;
-    }
-
     public int getxCord(){
 
         return this.xCord;
@@ -43,5 +37,9 @@ public class Paddle {
     public int getyCord(){
 
         return this.yCord;
+    }
+
+    public void updtaePaddlePos(){
+
     }
 }

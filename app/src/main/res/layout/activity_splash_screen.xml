@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash"
     android:animateLayoutChanges="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +16,6 @@
     android:maxHeight="10dp"
     android:scaleType="fitXY">
     <RelativeLayout
-        android:id="@+id/splash"
         android:paddingTop="0dp"
         android:gravity="center"
         android:layout_width="match_parent"

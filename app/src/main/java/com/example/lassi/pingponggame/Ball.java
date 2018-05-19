@@ -1,18 +1,23 @@
 package com.example.lassi.pingponggame;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+
 public class Ball {
 
-    final private int diameter;
+    private Bitmap ballPic;
     private int speed;
     private int xCord;
     private int yCord;
 
-    public Ball(int diameter, int xCord, int yCord, int speed){
+    public Ball(int xCord, int yCord, int speed){
 
-        this.diameter = diameter;
         this.speed = speed;
         this.xCord = xCord;
         this.yCord = yCord;
+
+        //ballPic = BitmapFactory.decodeResource();
     }
 
     public void setSpeed(int speed){
@@ -30,11 +35,6 @@ public class Ball {
         this.yCord = yCord;
     }
 
-    public int getDiameter(){
-
-        return this.diameter;
-    }
-
     public int getSpeed(){
 
         return this.speed;
@@ -48,5 +48,10 @@ public class Ball {
     public int getyCord(){
 
         return this.yCord;
+    }
+
+    public void updateBallPos(){
+
+        
     }
 }
