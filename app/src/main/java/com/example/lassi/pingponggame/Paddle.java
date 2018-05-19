@@ -11,12 +11,12 @@ public class Paddle {
     private int xCord;
     private int yCord;
 
-    public Paddle(int xCord, int yCord){
+    public Paddle(Context con, int xCord, int yCord){
 
         this.xCord = xCord;
         this.yCord = yCord;
 
-        //paddlePic = BitmapFactory.decodeResource();
+        paddlePic = BitmapFactory.decodeResource(con.getResources(), R.drawable.asset3);
     }
 
     public void setxCord(int xCord){
@@ -37,6 +37,11 @@ public class Paddle {
     public int getyCord(){
 
         return this.yCord;
+    }
+
+    public Bitmap getBitmap(){
+
+        return this.paddlePic;
     }
 
     public void updtaePaddlePos(){

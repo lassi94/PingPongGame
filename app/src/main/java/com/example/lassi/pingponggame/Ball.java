@@ -1,5 +1,6 @@
 package com.example.lassi.pingponggame;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
@@ -11,13 +12,13 @@ public class Ball {
     private int xCord;
     private int yCord;
 
-    public Ball(int xCord, int yCord, int speed){
+    public Ball(Context context, int xCord, int yCord, int speed){
 
         this.speed = speed;
         this.xCord = xCord;
         this.yCord = yCord;
 
-        //ballPic = BitmapFactory.decodeResource();
+        ballPic = BitmapFactory.decodeResource(context.getResources(), R.drawable.asset4);
     }
 
     public void setSpeed(int speed){
@@ -50,8 +51,11 @@ public class Ball {
         return this.yCord;
     }
 
+    public Bitmap getBitmap(){
+        return this.ballPic;
+    }
+
     public void updateBallPos(){
 
-        
     }
 }
