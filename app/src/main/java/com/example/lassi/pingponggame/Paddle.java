@@ -7,34 +7,41 @@ import android.graphics.BitmapFactory;
 public class Paddle {
 
     private Bitmap paddlePic;
+    private boolean touch;
 
-    private int xCord;
-    private int yCord;
+    private float xCord;
+    private float yCord;
+    private int paddleSpeed;
 
-    public Paddle(Context con, int xCord, int yCord){
+    private int dx;
+    private int dy;
+
+    public Paddle(Context con, float xCord, float yCord){
 
         this.xCord = xCord;
         this.yCord = yCord;
+        paddleSpeed = 10;
+        touch = false;
 
         paddlePic = BitmapFactory.decodeResource(con.getResources(), R.drawable.asset3);
     }
 
-    public void setxCord(int xCord){
+    public void setxCord(float xCord){
 
         this.xCord = xCord;
     }
 
-    public void setyCord(int yCord){
+    public void setyCord(float yCord){
 
         this.yCord = yCord;
     }
 
-    public int getxCord(){
+    public float getxCord(){
 
         return this.xCord;
     }
 
-    public int getyCord(){
+    public float getyCord(){
 
         return this.yCord;
     }
@@ -44,7 +51,23 @@ public class Paddle {
         return this.paddlePic;
     }
 
+    public int getPaddleSpeed(){
+
+        return this.paddleSpeed;
+    }
+
+    public void touched(){
+        touch = true;
+    }
+
+    public void notTouched(){
+        touch = false;
+    }
+
     public void updtaePaddlePos(){
 
+        if(touch){
+
+        }
     }
 }
