@@ -13,8 +13,8 @@ public class Paddle {
     private float yCord;
     private int paddleSpeed;
 
-    private int dx;
-    private int dy;
+    private int maxX;
+    private int minX;
 
     public Paddle(Context con, float xCord, float yCord){
 
@@ -68,6 +68,14 @@ public class Paddle {
 
         if(touch){
 
+        }
+
+        if(xCord<minX){
+            yCord = minX;
+        }
+
+        if(xCord>maxX){
+            xCord= maxX;
         }
     }
 }
