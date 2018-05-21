@@ -51,6 +51,21 @@ public class Ball {
 
     }
 
+    public void checkPaddleHit(Paddle paddle, Paddle cpuPaddle){
+
+        if(yCord <= 143){
+            if(xCord >= paddle.getxCord() && xCord <= paddle.getxCord() + 112){
+                speedY = -speedY;
+            }
+
+        }
+        if(yCord >=937){
+            if(xCord >= cpuPaddle.getxCord() && xCord <= cpuPaddle.getxCord() + 112){
+                speedY = -speedY;
+            }
+        }
+    }
+
     public void setSpeedX(int speed){
 
         this.speedX = speed;

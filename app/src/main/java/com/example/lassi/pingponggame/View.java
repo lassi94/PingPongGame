@@ -41,7 +41,7 @@ public class View extends SurfaceView implements Runnable{
 
         bm = BitmapFactory.decodeResource(getResources(), R.drawable.asset2);
         paddle = new Paddle(context, 200, 100);
-        cpuPaddle = new Paddle(context, 200, 1000);
+        cpuPaddle = new Paddle(context, 200, 980);
         ball = new Ball(context, 500, 500,0, 20);
         sh = getHolder();
         paint = new Paint();
@@ -97,6 +97,7 @@ public class View extends SurfaceView implements Runnable{
         if(ViewCompat.isLaidOut(getRootView())) {
             paddle.updtaePaddlePos();
             ball.move((getRootView().getWidth()*2), (getRootView().getHeight()*2), getBallWidth());
+            ball.checkPaddleHit(paddle, cpuPaddle);
         }
     }
 
