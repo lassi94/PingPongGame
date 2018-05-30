@@ -7,36 +7,47 @@ import android.view.Display;
 
 public class GameActivity extends AppCompatActivity {
 
-
-    private View view;
+    //Present game view object
+    GameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-        //Get screen dimensions
-        Display disp = getWindowManager().getDefaultDisplay();
+        //Access screen
+        Display display = getWindowManager().getDefaultDisplay();
+
         Point size = new Point();
-        disp.getSize(size);
+        display.getSize(size);
 
-        //Set the gameview into gameactivity view
-        view = new View(this, size.x, size.y);
-        setContentView(view);
-
-
+        // Initialize GameView and set it as the view
+        gameView = new GameView(this, size.x, size.y);
+        setContentView(gameView);
     }
 
-    public void onResume(){
+
+    @Override
+    protected void onResume() {
         super.onResume();
-        view.resume();
+
+        // Call the GameView resume method
+        gameView.resume();
     }
 
-    public void onPause(){
+    // If player quits the game
+    @Override
+    protected void onPause() {
         super.onPause();
-        try {
-            view.pause();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        // Call GameView pause method
+        gameView.pause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        gameView.musicStop();
     }
 }

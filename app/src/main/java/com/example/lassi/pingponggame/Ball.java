@@ -1,117 +1,114 @@
 package com.example.lassi.pingponggame;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.view.ViewCompat;
+import android.graphics.RectF;
 
+import java.util.Random;
 
 public class Ball {
 
-    private Bitmap ballPic;
-    private View view;
-    private int speedX;
-    private int speedY;
-    private int xCord;
-    private int yCord;
-    private int dy;
-    private int dx;
+    //Present the RectF object
+    private RectF ballObj;
 
-    public Ball(Context context, int xCord, int yCord, int speedX, int speedY){
+    //Variables for speed and dimension
+    private float speedX;
+    private float speedY;
+    private float width;
+    private float height;
+
+    //Place coordinates
+    private float xCord;
+    private float yCord;
+
+    public Ball(int screenX, int screenY, int speedX, int speedY){
+
+        // Set the ball eidth and height
+        width = screenX / 100;
+        height = width;
+
+        //Set the ball coordinates in the middle of screen
+        xCord = screenX / 2;
+        yCord = screenY / 2;
+
+        //Set the speeds
+        this.speedX = speedY;
+        this.speedY = speedX;
+
+        // Initialize the object
+        ballObj = new RectF(xCord, yCord, xCord + width, yCord + height);
+
+    }
+
+    //Get the paddle object
+    public RectF getRect(){
+        return ballObj;
+    }
+
+    // Update the ball position
+    public void update(int screenSizeX, int screenSizeY){
+
+        //Update balls left side coordinates
+        ballObj.left = ballObj.left + this.speedX;
+
+        //Update balls top side coordinates
+        ballObj.top = ballObj.top + this.speedY;
+
+        //Update balls right side coordinates
+        ballObj.right = ballObj.left + width;
+
+        //Update balls bottom side coordinates
+        ballObj.bottom = ballObj.top - height;
+
+    }
+
+    //Reverse y speed
+    public void reverseYSpeed(){
+
+        speedY = -speedY;
+    }
+
+    // Reverse x speed
+    public void reverseXSpeed(){
+
+        speedX = -speedX;
+    }
+
+
+    //Increase the speed with the passed value
+    public void increaseVelocity(int speedX, int speedY){
 
         this.speedX = speedX;
         this.speedY = speedY;
-        this.xCord = xCord;
-        this.yCord = yCord;
-
-        ballPic = BitmapFactory.decodeResource(context.getResources(), R.drawable.asset4);
     }
 
-    public void move(int width, int height, int ballWidth){
-
-        xCord += speedX;
-        yCord += speedY;
-
-
-            int ballHitRight = width - ballWidth/2;
-            int ballHitLeft = ballWidth / 2;
-
-            if (xCord < ballHitLeft) {
-
-                speedX = -speedX;
-            }
-            if (xCord > ballHitRight) {
-                speedX = -speedX;
-            }
-            if(this.getyCord() < -15 || this.getyCord() > height){
-                check();
-            }
-
-
+    //Reset the ball place to center
+    public void resetPlace(int x, int y){
+        ballObj.left = x / 2;
+        ballObj.top = y / 2;
+        ballObj.right = x / 2 + width;
+        ballObj.bottom = y / 2 - height;
     }
 
-    public void checkPaddleHit(Paddle paddle, Paddle cpuPaddle){
-
-        if(yCord <= 143){
-            if(xCord >= paddle.getxCord() && xCord <= paddle.getxCord() + 112){
-                speedY = -speedY;
-            }
-
-        }
-        if(yCord >=937){
-            if(xCord >= cpuPaddle.getxCord() && xCord <= cpuPaddle.getxCord() + 112){
-                speedY = -speedY;
-            }
-        }
+    //Get the x coordinate
+    public float getxCord() {
+        return xCord;
     }
 
-    public void setSpeedX(int speed){
-
-        this.speedX = speed;
-    }
-
-    public void setSpeedY(int speed){
-        this.speedY = speed;
-    }
-
-    public void setxCord(int xCord){
-
+    //Set the x coordinate
+    public void setxCord(float xCord) {
         this.xCord = xCord;
     }
 
-    public void setyCord(){
-
-        this.yCord = yCord;
+    //Clear the speed
+    public void clearSpeed(int startSpeedX, int startSpeedY){
+        speedY = startSpeedY;
+        speedX = startSpeedX;
     }
 
-    public int getSpeedX(){
-
-        return this.speedX;
+    public float getmSpeedX() {
+        return speedX;
     }
 
-    public int getSpeedY(){
-        return this.speedY;
+    public void setSpeedX(float speedX) {
+        this.speedX = speedX;
     }
-
-    public int getxCord(){
-
-        return this.xCord;
-    }
-
-    public int getyCord(){
-
-        return this.yCord;
-    }
-
-    public Bitmap getBitmap(){
-
-        return this.ballPic;
-    }
-
-    public boolean check(){
-        return true;
-    }
-
-
 }
